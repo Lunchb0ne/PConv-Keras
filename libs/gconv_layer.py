@@ -44,7 +44,13 @@ class GConv2D(Conv2D):
         inputs = K.concatenate([inputs[0], inputs[1]], axis=-1)
 
         # Run original convolution operation
-        img_output = self._convolution_op(inputs, self.kernel)
+        # img_output = K.conv2d(inputs,
+        #                       self.kernel,
+        #                       strides=self.strides,
+        #                       padding='same',
+        #                       data_format=self.data_format,
+        #                       dilation_rate=self.dilation_rate)
+        img_output = self.convolution_op(inputs, self.kernel)
 
         # Apply bias only to the image (if chosen to do so)
         if self.use_bias:

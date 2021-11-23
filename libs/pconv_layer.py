@@ -44,7 +44,14 @@ class PConv2D(Conv2D):
             dilation_rate=self.dilation_rate
         )
         # Run original convolution operation
-        img_output = self._convolution_op(inputs[0]*inputs[1], self.kernel)
+        # img_output = self._convolution_op(inputs[0]*inputs[1], self.kernel)
+        # Apply convolutions to image
+        img_output = K.conv2d((inputs[0] * inputs[1]),
+                              self.kernel,
+                              strides=self.strides,
+                              padding='same',
+                              data_format=self.data_format,
+                              dilation_rate=self.dilation_rate)
 
         # Calculate the mask ratio on each pixel in the output mask
         mask_ratio = self.window_size / (mask_output + 1e-8)

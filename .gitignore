@@ -112,3 +112,14 @@ venv.bak/
 
 backup*
 pexels_royalty_free_photos*
+node_modules/
+
+wandb/
+
+logs/plugins/profile/
+
+*.profile-empty
+
+*.pbtxt
+
+logs/train/
